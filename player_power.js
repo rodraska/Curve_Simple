@@ -43,38 +43,10 @@ FtPlayer.give_powerup = function(id)
             } 
         }
     }
-    if (id == 10 || id == 11) //renew others
-    {
-        for (let i = 0; i < game.players.length; i++)
-        {
-            if (game.players[i].id != this.id)
-            {
-                if (game.players[i].check_powerup(id) == -1)
-                {
-                    let power = new game.powerConstructors[id](id, [0, 0], game.baseIters[id], game.players[i]);
-                    game.players[i].powers.push(power);
-                } 
-            } 
-        }
-    }
-    if (id == 12 || id == 13) //renew all
+    if (id == 10) //general
     {
         game.currentIters[id] = game.baseIters[id];
-        for (let i = 0; i < game.players.length; i++)
-        {
-            let id_renew = this.check_powerup(id);
-            if (id_renew == -1)
-            {
-                let power = new game.powerConstructors[id](id, [0, 0], game.baseIters[id], this);
-                game.players[i].powers.push(power);
-            }
-            else this.game.powers[id_renew].iters = game.baseIters[id]; 
-        }
-    }
-    if (id == 14 || id == 15) //general
-    {
-        game.currentIters[id] = game.baseIters[id];
-        if (id == 15) game.reset_paint();
+        game.reset_paint();
     }
 }
 

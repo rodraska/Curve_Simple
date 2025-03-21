@@ -33,7 +33,7 @@ FtGame.players_free = function()
 
 FtGame.begin_iter = function()
 {
-    for (let i = 12; i <= 15; i++) if (this.currentIters[i] > 0) this.currentIters[i]--;
+    if (this.currentIters[10] > 0) this.currentIters[i]--;
     this.paint_offset();
     this.new_powerup();
     this.restoreCanvas();
@@ -45,7 +45,7 @@ FtGame.curr_iter = function()
     this.gameCoordinates();
     this.gameHoles();
     this.gamePowers();
-    //this.gameCheckCollision();
+    this.gameCheckCollision();
     this.gamePaintHist();
     this.saveCanvas();
     this.gamePaintPlayer();
@@ -54,7 +54,6 @@ FtGame.curr_iter = function()
 
 FtGame.end_iter = function()
 {
-    if (this.currentIters[12] > 0) this.paint_bulb();
     if (this.currentIters.end > 60) this.paint_gg();
     this.gamePaintArcs();
     this.paint_offset();

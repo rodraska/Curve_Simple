@@ -28,30 +28,6 @@ FtGame.final_paint = function()
     this.paint_gg();
 }
 
-FtGame.paint_bulb = function()
-{
-    ctx.fillStyle = 'darkgray';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    for (let i = 0; i < this.players.length; i++)
-    {
-        for (let x = 0; x < this.players[i].powers.length; x++)
-        {
-            if (this.players[i].powers[x].id == 12)
-            {
-                ctx.save();
-                ctx.beginPath();
-                ctx.arc(this.players[i].truepos[0], this.players[i].truepos[1], 100, 0, 2 * Math.PI);
-                ctx.closePath();
-                ctx.clip();
-                this.restoreCanvas();
-                this.gamePaintPlayer();
-                this.gamePaintPowers();
-                ctx.restore();
-            }  
-        }
-    }
-}
-
 FtGame.paint_line = function(x_i, y_i, x_f, y_f)
 {
     ctx.beginPath();
