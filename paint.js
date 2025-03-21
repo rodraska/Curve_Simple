@@ -22,7 +22,6 @@ FtGame.final_paint = function()
     this.reset_paint();
     this.gamePaintHist();
     this.gamePaintPlayer();
-    gamePaintArray();
     this.gamePaintPowers();
     this.paint_offset();
     this.paint_gg();

@@ -37,8 +37,6 @@ FtPlayer.give_powerup = function(id)
             if (game.players[i].id != this.id)
             {
                 let power = new game.powerConstructors[id](id, [0, 0], game.baseIters[id], game.players[i]);
-                console.log('hello');
-                console.log(power);
                 game.players[i].powers.push(power);
             } 
         }
