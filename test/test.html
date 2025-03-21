@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Canvas Example</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="myCanvas" width="800" height="600"></canvas>
+
+<script>
+  // Get the canvas element
+  var canvas = document.getElementById("myCanvas");
+  var ctx = canvas.getContext("2d");
+
+  // Step 1: Paint the canvas with the color red
+  ctx.fillStyle = "red";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Step 2: Paint random lines and curves on top of the red
+  for (var i = 0; i < 50; i++) {
+    ctx.beginPath();
+    ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+    ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+    ctx.quadraticCurveTo(Math.random() * canvas.width, Math.random() * canvas.height,
+                         Math.random() * canvas.width, Math.random() * canvas.height);
+    ctx.bezierCurveTo(Math.random() * canvas.width, Math.random() * canvas.height,
+                      Math.random() * canvas.width, Math.random() * canvas.height,
+                      Math.random() * canvas.width, Math.random() * canvas.height);
+    ctx.stroke();
+  }
+
+  // Step 3: Paint the whole canvas grey
+  ctx.fillStyle = "grey";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Step 4: Clip a circular region at the center of the canvas
+  ctx.globalCompositeOperation = 'source-over'; // Reset global composite operation
+  ctx.beginPath();
+  ctx.arc(canvas.width / 2, canvas.height / 2, 200, 0, 2 * Math.PI);
+  ctx.closePath();
+  ctx.clip();
+
+  // Step 5: Redraw the red color and random lines inside the circular region
+  ctx.fillStyle = "red";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  for (var i = 0; i < 100; i++) {
+    ctx.beginPath();
+    ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+    ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+    ctx.quadraticCurveTo(Math.random() * canvas.width, Math.random() * canvas.height,
+                         Math.random() * canvas.width, Math.random() * canvas.height);
+    ctx.bezierCurveTo(Math.random() * canvas.width, Math.random() * canvas.height,
+                      Math.random() * canvas.width, Math.random() * canvas.height,
+                      Math.random() * canvas.width, Math.random() * canvas.height);
+    ctx.stroke();
+  }
+
+</script>
+
+</body>
+</html>
